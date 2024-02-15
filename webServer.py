@@ -22,7 +22,7 @@ def webServer(port=13331):
     connectionSocket, addr = serverSocket.accept()#Fill in start -are you accepting connections?     #Fill in end
     
     try:
-      message = connectionSocket.recv(1024).decode() #Fill in start -a client is sending you a message   #Fill in end 
+      message = connectionSocket.recv(4096).decode() #Fill in start -a client is sending you a message   #Fill in end 
       filename = message.split()[1]
       
       #opens the client requested file. 
