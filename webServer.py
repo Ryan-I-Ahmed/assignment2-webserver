@@ -37,7 +37,7 @@ def webServer(port=13331):
       #Content-Type is an example on how to send a header as bytes. There are more!
       header = "HTTP/1.1 200 OK\r\n\r\n"
       outputdata = "Content-Type: text/html; charset=UTF-8\r\n"
-      outputdata = header.join(outputdata)
+      outputdata = header + outputdata
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
@@ -45,7 +45,7 @@ def webServer(port=13331):
                
       for i in f: #for line in file
         #Fill in start - append your html file contents #Fill in end 
-        outputdata = outputdata.join(i)
+        outputdata = outputdata + i
         #Send the content of the requested file to the client (don't forget the headers you created)!
       # Fill in start
       connectionSocket.send(outputdata.encode())
