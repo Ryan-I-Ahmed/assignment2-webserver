@@ -22,7 +22,7 @@ def webServer(port=13331):
     connectionSocket, addr = serverSocket.accept()#Fill in start -are you accepting connections?     #Fill in end
     
     try:
-      message = connectionSocket.recv(1024) #Fill in start -a client is sending you a message   #Fill in end 
+      message = connectionSocket.recv(1024).decode() #Fill in start -a client is sending you a message   #Fill in end 
       filename = message.split()[1]
       
       #opens the client requested file. 
@@ -45,7 +45,7 @@ def webServer(port=13331):
                
       for i in f: #for line in file
         #Fill in start - append your html file contents #Fill in end 
-        outputdata = outputdata.join(str(i))
+        outputdata = outputdata.join(i)
         #Send the content of the requested file to the client (don't forget the headers you created)!
       # Fill in start
       connectionSocket.send(outputdata.encode())
