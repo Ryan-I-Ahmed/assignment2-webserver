@@ -45,10 +45,10 @@ def webServer(port=13331):
                
       for i in f: #for line in file
         #Fill in start - append your html file contents #Fill in end 
-        outputdata = outputdata.join(i)
+        outputdata = outputdata.join(str(i))
         #Send the content of the requested file to the client (don't forget the headers you created)!
       # Fill in start
-      connectionSocket.send(outputdata)
+      connectionSocket.send(outputdata.encode())
       # Fill in end
         
       connectionSocket.close() #closing the connection socket
@@ -58,8 +58,8 @@ def webServer(port=13331):
       # Remember the format you used in the try: block!
       #Fill in start
       header = "HTTP/1.1 400 Not Found\r\n\r\n"
-      outputdata = header.join(outputdata)
-      connectionSocket.send(outputdata)
+      outputdata = header.join(str(outputdata))
+      connectionSocket.send(outputdata.encode())
       #Fill in end
 
 
